@@ -12,3 +12,4 @@ Feel free to use this project in any way you want.
 ![Screenshot 2024-03-30 134447](https://github.com/jehadhmoudah/public_database_course_project/assets/114701208/ffadd20d-073a-43ac-bd76-36d5dbe38a88)
 ![Screenshot 2024-03-30 134534](https://github.com/jehadhmoudah/public_database_course_project/assets/114701208/2425c6d6-0bf4-4672-94f2-f3db5f243adf)
 ![Screenshot 2024-03-30 134604](https://github.com/jehadhmoudah/public_database_course_project/assets/114701208/d9d9f23f-fdab-4b6a-9654-01d09cd68071)
+![Screenshot 2023-11-25 211947](https://github.com/jehadhmoudah/public_database_course_project/assets/114701208/2fddd4f0-6db8-491a-80d6-03586621b810)
