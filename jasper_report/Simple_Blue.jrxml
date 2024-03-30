@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3bc8aca9-8320-471b-b2e1-da2bb2905ee1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="dGlja2V0cyBBUyAsMTUsMTUsMGMyMDAwNWEtZmFlOS00Y2VmLTkyMTYtNjRjOWMwZTY4N2EwOw=="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+  CAST((SELECT SUM(duration) / 60.0 * 8 FROM tickets) AS REAL) AS tickets_revenue,
+  CAST((SELECT SUM(balance) FROM accounts) AS REAL) AS accounts_revenue,
+  (SELECT COUNT(*) FROM accounts) AS accounts_no,
+  (SELECT COUNT(*) FROM tickets) AS tickets_no,
+  CAST((SELECT SUM(duration) FROM tickets) AS REAL) AS total_minutes_spent_tickets,
+  CAST((SELECT SUM(duration) / 60.0 * 8 FROM tickets) + (SELECT SUM(balance) FROM accounts) AS REAL) AS total_revenue,
+  CAST((SELECT SUM(balance) / 8 * 60 FROM accounts) AS REAL) AS total_minutes_spent_accounts]]>
+	</queryString>
+	<field name="tickets_revenue" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="tickets_revenue"/>
+		<property name="com.jaspersoft.studio.field.label" value="tickets_revenue"/>
+	</field>
+	<field name="accounts_revenue" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="accounts_revenue"/>
+		<property name="com.jaspersoft.studio.field.label" value="accounts_revenue"/>
+	</field>
+	<field name="accounts_no" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="accounts_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="accounts_no"/>
+	</field>
+	<field name="tickets_no" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="tickets_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="tickets_no"/>
+	</field>
+	<field name="total_minutes_spent_tickets" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_minutes_spent_tickets"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_minutes_spent_tickets"/>
+	</field>
+	<field name="total_revenue" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total_revenue"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_revenue"/>
+	</field>
+	<field name="total_minutes_spent_accounts" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total_minutes_spent_accounts"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_minutes_spent_accounts"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{tickets_revenue}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement x="0" y="0" width="130" height="20" forecolor="#666666" uuid="06a84404-1b20-4ad5-8148-83cb6e5acff0"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Tickets Revenue (NIS):]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="165" y="-7" width="435" height="32" forecolor="#006699" uuid="d72c774f-b52f-4d55-9919-0adb63ba1682"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tickets_revenue}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{accounts_revenue}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="165" y="-7" width="435" height="32" forecolor="#006699" uuid="a74b1bc8-8076-485e-8678-f9cb04e3dd6a"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accounts_revenue}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="141" height="30" forecolor="#666666" uuid="99eac25e-abd3-4dbd-8147-1fd202ab09a2"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Accounts Revenue (NIS):]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupExpression><![CDATA[$F{accounts_no}]]></groupExpression>
+		<groupHeader>
+			<band height="34">
+				<textField>
+					<reportElement x="140" y="0" width="435" height="32" forecolor="#006699" uuid="d2a91fa1-8a89-409b-8b50-6e53d366a167"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accounts_no}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="10d5f33f-8591-4da6-ae55-d2e4258c7f4c"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Accounts No.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupExpression><![CDATA[$F{tickets_no}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<textField>
+					<reportElement x="140" y="0" width="435" height="32" forecolor="#006699" uuid="c35c4d58-fcd9-4250-b259-07563b009b02"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tickets_no}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="fc98a97b-5825-4a0d-8b2d-7a32c4967a0b"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Tickets No.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="total_minutes_spent_tickets">
+		<groupExpression><![CDATA[$F{total_minutes_spent_tickets}]]></groupExpression>
+		<groupHeader>
+			<band height="60">
+				<staticText>
+					<reportElement x="0" y="6" width="230" height="44" forecolor="#666666" uuid="dacd5658-5d45-4e43-82c6-dbfcc96242c6"/>
+					<textElement>
+						<font size="24"/>
+					</textElement>
+					<text><![CDATA[Total Revenue (NIS):]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="240" y="5" width="365" height="50" forecolor="#006699" uuid="6c901888-1716-4f58-9a33-8533233540a2"/>
+					<textElement>
+						<font size="26" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_revenue}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="total_revenue">
+		<groupExpression><![CDATA[$F{total_revenue}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement x="0" y="0" width="120" height="40" forecolor="#666666" uuid="72c0e5d9-92c6-4503-a312-42fbca594357"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Total Minutes Spent by Tickets]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="141" y="0" width="435" height="32" forecolor="#006699" uuid="4faef955-d0df-4d20-b03a-935a1e7a145a"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_minutes_spent_tickets}.intValue()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="total_minutes_spent_accounts">
+		<groupExpression><![CDATA[$F{total_minutes_spent_accounts}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement x="0" y="0" width="120" height="50" forecolor="#666666" uuid="b193821f-15c9-4550-b260-5959440b4468"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Total Minutes Spent by Accounts]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="141" y="0" width="424" height="32" forecolor="#006699" uuid="04a79683-4352-41d4-a81e-a65c07bd4a8f"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_minutes_spent_accounts}.intValue()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="9d1949ce-1727-4867-9b9c-df2c84417b2d"/>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="7ebbbb24-f1ca-4c88-a89f-44c050ddccc6"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Revenue Statistics Report]]></text>
+				</staticText>
+				<image>
+					<reportElement x="40" y="10" width="210" height="69" uuid="c229ef8b-fa5d-43a6-8a31-1f4a12705f60"/>
+					<imageExpression><![CDATA["SlashLogo.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24"/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="51443245-bae5-4153-895e-f99713888029"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="44ff7a1f-5948-4609-a320-df6901147e3a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="8dfe46b9-a261-4b87-83d8-7fbcc9c8df5c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="36d0921c-431c-4f7b-83fd-59bf164cea3d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
